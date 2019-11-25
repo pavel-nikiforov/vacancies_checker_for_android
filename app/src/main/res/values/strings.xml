@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Vacancies Checker</string>
+    <string name="frag_update_update_button_name">Check for Updates</string>
+    <string name="frag_update_view_results_button_name">View Results</string>
+    <string name="stats_main_title">Statistics:</string>
+    <string name="stats_new_emp_button_name">New employers:</string>
+    <string name="stats_new_vac_button_name">New vacancies:</string>
+    <string name="stats_updated_vac_button_name">Updated vacancies:</string>
+    <string name="stats_accepted_vac_button_name">Accepted vacancies:</string>
+    <string name="stats_rejected_vac_button_name">Rejected vacancies:</string>
+    <string name="stats_total_vac_button_name">Total vacancies:</string>
+    <string name="stats_junk_stat_text">%d%% of vacancies is junk (%d of %d)</string>
+    <string name="stats_new_stat_text">%d%% of accepted is new (%d of %d)</string>
+    <string name="vacancies_headline_new">New vacancies:</string>
+    <string name="vacancies_headline_updated">Updated vacancies:</string>
+    <string name="vacancies_headline_accepted">Accepted vacancies:</string>
+    <string name="vacancies_headline_rejected">Rejected vacancies:</string>
+    <string name="vacancies_headline_total">All vacancies:</string>
+    <string name="vacancies_updated_date_name_name">Updated:</string>
+    <string name="vacancies_updates_count_name">Updates count:</string>
+    <string name="vacdetails_headline">Vacancy Details:</string>
+    <string name="vacdetails_addition_date_label">Added:</string>
+    <string name="vacdetails_view_view_btn_label">View in WebView</string>
+    <string name="vacdetails_view_browser_btn_label">View in Browser</string>
+</resources>
