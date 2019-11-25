@@ -1,7 +1,7 @@
 # vacancies_checker for Android
 
 ### What's this?
-Basically the project is an implementation of [vacancy checker] https://github.com/pavel-nikiforov/vacancies_checker
+Basically the project is an implementation of [vacancy checker] (https://github.com/pavel-nikiforov/vacancies_checker)
 script as an Android application.
 
 ### How to use the application?
