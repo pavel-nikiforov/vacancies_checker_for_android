@@ -22,4 +22,7 @@
     <string name="vacdetails_addition_date_label">Added:</string>
     <string name="vacdetails_view_view_btn_label">View in WebView</string>
     <string name="vacdetails_view_browser_btn_label">View in Browser</string>
+    <string name="navigation_drawer_open">Navigation drawer open</string>
+    <string name="navigation_drawer_close">Navigation drawer close</string>
+    <string name="drawer_menu_item_start">Start</string>
 </resources>

@@ -2,6 +2,7 @@ package com.pavel_nikiforov.android.vacancieschecker.logic;
 
 import android.app.Application;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VacancyChecker extends Application {
@@ -32,11 +33,34 @@ public class VacancyChecker extends Application {
     public void setNewVacanciesList(List<Vacancy> newVacanciesList) { mNewVacanciesList = newVacanciesList; }
     public void setNewEmployersList(List<Vacancy> newEmployersList) { mNewEmployersList = newEmployersList; }
 
-    public List<Vacancy> getRawVacanciesList() { return mRawVacanciesList; }
-    public List<Vacancy> getRejectedVacanciesList() { return mRejectedVacanciesList; }
-    public List<Vacancy> getAcceptedVacanciesList() { return mAcceptedVacanciesList; }
-    public List<Vacancy> getUpdatedVacanciesList() { return mUpdatedVacanciesList; }
-    public List<Vacancy> getNewVacanciesList() { return mNewVacanciesList; }
-    public List<Vacancy> getNewEmployersList() { return mNewEmployersList; }
+    public List<Vacancy> getRawVacanciesList() {
+        if (mRawVacanciesList == null) return new ArrayList<Vacancy>();
+        return mRawVacanciesList;
+    }
+
+    public List<Vacancy> getRejectedVacanciesList() {
+        if (mRejectedVacanciesList == null) return new ArrayList<Vacancy>();
+        return mRejectedVacanciesList;
+    }
+
+    public List<Vacancy> getAcceptedVacanciesList() {
+        if (mAcceptedVacanciesList == null) return new ArrayList<Vacancy>();
+        return mAcceptedVacanciesList;
+    }
+
+    public List<Vacancy> getUpdatedVacanciesList() {
+        if (mUpdatedVacanciesList == null) return new ArrayList<Vacancy>();
+        return mUpdatedVacanciesList;
+    }
+
+    public List<Vacancy> getNewVacanciesList() {
+        if (mNewVacanciesList == null) return new ArrayList<Vacancy>();
+        return mNewVacanciesList;
+    }
+
+    public List<Vacancy> getNewEmployersList() {
+        if (mNewEmployersList == null) return new ArrayList<Vacancy>();
+        return mNewEmployersList;
+    }
 
 }

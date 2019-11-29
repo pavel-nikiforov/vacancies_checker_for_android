@@ -1,7 +1,9 @@
 package com.pavel_nikiforov.android.vacancieschecker.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -58,13 +60,7 @@ public class StatsFragment extends Fragment {
         mNewEmpButton = (Button) view.findViewById(R.id.stats_new_emp_button);
         mNewEmpButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
-                NewEmployersFragment nextFrag = new NewEmployersFragment();
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
-                        .addToBackStack(null)
-                        .commit();
-            }
+            public void onClick(View v) { proceedTo("new_employers"); }
         });
 
 
@@ -121,7 +117,13 @@ public class StatsFragment extends Fragment {
         Bundle args = new Bundle();
         args.putString("type", destination);
 
-        VacanciesListFragment nextFrag = new VacanciesListFragment();
+        Fragment nextFrag;
+        if(destination.contentEquals("new_employers")){
+            nextFrag = new NewEmployersFragment();
+        } else {
+            nextFrag = new VacanciesListFragment();
+        }
+
         nextFrag.setArguments(args);
         getActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, nextFrag, "findThisFragment")
