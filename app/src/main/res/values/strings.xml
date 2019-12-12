@@ -25,4 +25,12 @@
     <string name="navigation_drawer_open">Navigation drawer open</string>
     <string name="navigation_drawer_close">Navigation drawer close</string>
     <string name="drawer_menu_item_start">Start</string>
+    <string name="drawer_menu_item_settings">Settings</string>
+    <string name="settings_headline">Settings:</string>
+    <string name="settings_url_field_label">Edit URL</string>
+    <string name="settings_test_in_browser">Test in Browser</string>
+    <string name="settings_keyword_list_label">Edit keywords</string>
+    <string name="settings_keyword_edit_hint">enter a new keyword here</string>
+    <string name="settings_save_btn">Save Settings</string>
+    <string name="settings_saved_toast">Settings saved</string>
 </resources>

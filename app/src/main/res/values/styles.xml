@@ -1,7 +1,8 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+<!--    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -12,15 +13,25 @@
 
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">
+    <style name="AppThemeCompat" parent="Theme.AppCompat.Light.DarkActionBar">
+    </style>
+
+<!--    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.ActionBar">-->
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.MaterialComponents.Dark.ActionBar">
         <item name="titleTextColor">@android:color/white</item>
         <item name="titleTextAppearance">@android:style/TextAppearance.DeviceDefault.Large</item>
     </style>
 
-    <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.DayNight.DarkActionBar"></style>
+    <style name="AppTheme.PopupOverlay" parent="Theme.AppCompat.DayNight.DarkActionBar">
+        <item name="titleTextColor">@android:color/white</item>
+    </style>
 
     <style name="DrawerArrowStyle" parent="Widget.AppCompat.DrawerArrowToggle">
         <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="ChipTextApperance" parent="TextAppearance.MaterialComponents.Chip">
+        <item name="android:textColor">@android:color/white</item>
     </style>
 
 </resources>

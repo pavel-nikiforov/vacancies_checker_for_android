@@ -138,7 +138,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/vacdetails_view_view_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -149,9 +149,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vacdetails_updates_count_label">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/vacdetails_view_browser_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,6 +162,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vacdetails_view_view_btn">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
 </android.support.constraint.ConstraintLayout>

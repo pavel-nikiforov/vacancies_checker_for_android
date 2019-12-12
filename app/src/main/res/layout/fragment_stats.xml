@@ -22,7 +22,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_new_emp_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats_main_title">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
 
     <TextView
@@ -52,7 +52,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_new_vac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_new_emp_button">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
 
     <TextView
@@ -81,7 +81,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_updated_vac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_new_vac_button">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/stats_updated_vac_number"
@@ -109,7 +109,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_accepted_vac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_updated_vac_button">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/stats_accepted_vac_number"
@@ -137,7 +137,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_rejected_vac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -149,7 +149,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_accepted_vac_button">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/stats_rejected_vac_number"
@@ -165,7 +165,7 @@
     </TextView>
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/stats_total_vac_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -177,7 +177,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stats_rejected_vac_button">
 
-    </Button>
+    </android.support.v7.widget.AppCompatButton>
 
     <TextView
         android:id="@+id/stats_total_vac_number"

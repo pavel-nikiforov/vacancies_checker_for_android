@@ -23,7 +23,7 @@ import java.util.List;
 public class HHFetcher{
     private LoggedAsyncTask caller;
     private static final String tag = "Fetcher";
-    private static String user_agent = "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/69.0";
+    private static String user_agent = "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/71.0";
     private static String vacancy_list_url = "https://spb.hh.ru/search/vacancy?text=&specialization=1.117&area=2&salary=&currency_code=RUR&experience=doesNotMatter&order_by=publication_time&search_period=1&items_on_page=50&no_magic=true";
 
     private static String name_selector = "a[data-qa='vacancy-serp__vacancy-title']";
@@ -39,9 +39,10 @@ public class HHFetcher{
     }
 
     public static void getVacancies(List<Vacancy> vacancies, LoggedAsyncTask caller) {
+        String startURL = VacancyChecker.getInstance().getStartURL();
         String nextPage = null;
 
-        nextPage = getPage(vacancy_list_url, vacancies, caller);
+        nextPage = getPage(startURL, vacancies, caller);
 
         while (nextPage != null) {
             nextPage = getPage(nextPage, vacancies, caller);
@@ -116,7 +117,8 @@ public class HHFetcher{
 
     public static void filterVacancies(List<Vacancy> unfiltered_list, List<Vacancy> accepted_list,  List<Vacancy> rejected_list,LoggedAsyncTask caller) {
 
-        List<String> keywords = new ArrayList<String>(Arrays.asList(accepted_keywords.split(",")));
+        List<String> keywords = VacancyChecker.getInstance().getKeywordsList();
+        Log.d(tag, "--- got Keywords list: " + keywords);
 
         for (Vacancy vacancy : unfiltered_list) {
             boolean isAccepted = false;

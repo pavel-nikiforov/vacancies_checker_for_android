@@ -3,10 +3,14 @@ package com.pavel_nikiforov.android.vacancieschecker.logic;
 import android.app.Application;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class VacancyChecker extends Application {
     private static VacancyChecker sInstance;
+
+    private String mStartURL;
+    private List<String> mKeywordsList;
 
     private List<Vacancy> mRawVacanciesList;
     private List<Vacancy> mRejectedVacanciesList;
@@ -23,8 +27,21 @@ public class VacancyChecker extends Application {
     public void onCreate(){
         super.onCreate();
         sInstance = this;
+
+        mStartURL = Preferences.getStartURL(getApplicationContext());
+        mKeywordsList = Preferences.getKeywordsList(getApplicationContext());
     }
 
+
+    public void setStartURL(String startURL) {
+        mStartURL = startURL;
+        Preferences.setStartURL(getApplicationContext(), startURL);
+    }
+
+    public void setKeywordsList(List<String> keywordsList) {
+        mKeywordsList = keywordsList;
+        Preferences.setKeywordsList(getApplicationContext(), mKeywordsList);
+    }
 
     public void setRawVacanciesList(List<Vacancy> rawVacanciesList) { mRawVacanciesList = rawVacanciesList; }
     public void setRejectedVacanciesList(List<Vacancy> rejectedVacanciesList) { mRejectedVacanciesList = rejectedVacanciesList; }
@@ -32,6 +49,14 @@ public class VacancyChecker extends Application {
     public void setUpdatedVacanciesList(List<Vacancy> updatedVacanciesList) { mUpdatedVacanciesList = updatedVacanciesList; }
     public void setNewVacanciesList(List<Vacancy> newVacanciesList) { mNewVacanciesList = newVacanciesList; }
     public void setNewEmployersList(List<Vacancy> newEmployersList) { mNewEmployersList = newEmployersList; }
+
+    public String getStartURL() {
+        return mStartURL;
+    }
+
+    public List<String> getKeywordsList() {
+        return mKeywordsList;
+    }
 
     public List<Vacancy> getRawVacanciesList() {
         if (mRawVacanciesList == null) return new ArrayList<Vacancy>();

@@ -132,7 +132,7 @@ public class VacanciesListFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            Toast.makeText(getActivity(), mVacancy.getName() + " clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), mVacancy.getName() + " clicked", Toast.LENGTH_SHORT).show();
 
             Bundle args = new Bundle();
             args.putSerializable("vacancy", mVacancy);

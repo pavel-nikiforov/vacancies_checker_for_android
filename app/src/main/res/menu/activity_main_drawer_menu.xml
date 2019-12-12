@@ -46,6 +46,19 @@
             android:icon="@android:drawable/ic_dialog_dialer"
             android:title="@string/drawer_menu_item_start">
         </item>
+        <item
+            android:id="@+id/drawer_menu_break2"
+            android:title="">
+        </item>
+        <item
+            android:id="@+id/drawer_menu_break3"
+            android:title="">
+        </item>
+        <item
+            android:id="@+id/drawer_menu_item_settings"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/drawer_menu_item_settings">
+        </item>
     </group>
 
 </menu>
