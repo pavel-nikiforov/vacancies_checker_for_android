@@ -63,4 +63,9 @@ public class Preferences {
         Preferences.setKeywords(context, keywordsString);
     }
 
+    public static void reset(Context context){
+        setStartURL(context, DEFAULT_START_URL);
+        setKeywords(context, DEFAULT_KEYWORDS);
+    }
+
 }

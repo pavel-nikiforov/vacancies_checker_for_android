@@ -88,4 +88,11 @@ public class VacancyChecker extends Application {
         return mNewEmployersList;
     }
 
+    public void resetSettings(){
+        Preferences.reset(getApplicationContext());
+
+        mStartURL = Preferences.getStartURL(getApplicationContext());
+        mKeywordsList = Preferences.getKeywordsList(getApplicationContext());
+    }
+
 }

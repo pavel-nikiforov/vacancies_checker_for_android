@@ -33,4 +33,5 @@
     <string name="settings_keyword_edit_hint">enter a new keyword here</string>
     <string name="settings_save_btn">Save Settings</string>
     <string name="settings_saved_toast">Settings saved</string>
+    <string name="settings_menu_reset">Reset Settings</string>
 </resources>
