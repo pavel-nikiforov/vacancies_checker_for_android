@@ -7,6 +7,9 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -45,6 +48,7 @@ public class UpdateFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedState) {
         super.onCreate(savedState);
+        setHasOptionsMenu(true);
     }
 
     @Override
@@ -175,6 +179,29 @@ public class UpdateFragment extends Fragment {
         public void onBindViewHolder(LogViewHolder viewHolder, int position) {
             TextView textView = viewHolder.getView();
             textView.setText(mLogList.get(position));
+        }
+    }
+
+
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
+        super.onCreateOptionsMenu(menu, menuInflater);
+        menuInflater.inflate(R.menu.menu_update_fragment, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.menu_item_update_settings:
+                SettingsFragment nextFrag= new SettingsFragment();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.fragment_container, nextFrag, "findThisFragment")
+                        .addToBackStack(null)
+                        .commit();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 
