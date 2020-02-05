@@ -59,6 +59,15 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/drawer_menu_item_settings">
         </item>
+        <item
+            android:id="@+id/drawer_menu_break4"
+            android:title="">
+        </item>
+        <item
+            android:id="@+id/drawer_menu_item_view_database"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/drawer_menu_item_view_database">
+        </item>
     </group>
 
 </menu>

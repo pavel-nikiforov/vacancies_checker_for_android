@@ -60,6 +60,10 @@ public class VacanciesListFragment extends Fragment {
                 mHeadlineString = getString(R.string.vacancies_headline_total);
                 mVacanciesList = app.getRawVacanciesList();
                 break;
+            case "by employer":
+                mHeadlineString = getString(R.string.vacancies_headline_by_employer);
+                mVacanciesList = app.getVacanciesByEmployerList();
+                break;
             case "default":
                 mHeadlineString = "Default headline:";
                 mVacanciesList = new ArrayList<Vacancy>();
@@ -117,7 +121,7 @@ public class VacanciesListFragment extends Fragment {
             mEmployerNameTextView.setText(mVacancy.getEmployerName());
             mVacancyNameTextView.setText(mVacancy.getName());
 
-            if(mListType.contentEquals("updated")){
+            if(mListType.contentEquals("updated") || mListType.contentEquals("by employer")){
                 mLastUpdatedTextView.setText(mVacancy.getVacancyLastUpdated());
                 mUpdateCountTextView.setText(String.valueOf(mVacancy.getVacancyUpdatesCount()));
 

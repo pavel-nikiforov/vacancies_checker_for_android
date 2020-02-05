@@ -16,6 +16,7 @@
     <string name="vacancies_headline_accepted">Accepted vacancies:</string>
     <string name="vacancies_headline_rejected">Rejected vacancies:</string>
     <string name="vacancies_headline_total">All vacancies:</string>
+    <string name="vacancies_headline_by_employer">By Employer:</string>
     <string name="vacancies_updated_date_name_name">Updated:</string>
     <string name="vacancies_updates_count_name">Updates count:</string>
     <string name="vacdetails_headline">Vacancy Details:</string>
@@ -26,6 +27,7 @@
     <string name="navigation_drawer_close">Navigation drawer close</string>
     <string name="drawer_menu_item_start">Start</string>
     <string name="drawer_menu_item_settings">Settings</string>
+    <string name="drawer_menu_item_view_database">View Datase</string>
     <string name="settings_headline">Settings:</string>
     <string name="settings_url_field_label">Edit URL</string>
     <string name="settings_test_in_browser">Test in Browser</string>
@@ -34,4 +36,11 @@
     <string name="settings_save_btn">Save Settings</string>
     <string name="settings_saved_toast">Settings saved</string>
     <string name="settings_menu_reset">Reset Settings</string>
+    <string name="db_empl_headline">Employers in Database</string>
+    <string name="db_empl_vac_label">Vacancies:</string>
+    <string name="db_empl_upd_label">Updated:</string>
+    <string name="db_empl_rank_label">Activity Rank:</string>
+    <string name="db_empl_menu_sort_by_name">Sort by Name</string>
+    <string name="db_empl_menu_sort_by_count">Sort by Vacancies Count</string>
+    <string name="db_empl_menu_sort_by_rank">Sort by Activity Rank</string>
 </resources>

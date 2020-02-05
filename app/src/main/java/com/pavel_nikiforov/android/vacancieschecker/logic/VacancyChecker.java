@@ -18,6 +18,7 @@ public class VacancyChecker extends Application {
     private List<Vacancy> mUpdatedVacanciesList;
     private List<Vacancy> mNewVacanciesList;
     private List<Vacancy> mNewEmployersList;
+    private List<Vacancy> mVacanciesByEmployerList;
 
     public static VacancyChecker getInstance(){
         return sInstance;
@@ -49,6 +50,7 @@ public class VacancyChecker extends Application {
     public void setUpdatedVacanciesList(List<Vacancy> updatedVacanciesList) { mUpdatedVacanciesList = updatedVacanciesList; }
     public void setNewVacanciesList(List<Vacancy> newVacanciesList) { mNewVacanciesList = newVacanciesList; }
     public void setNewEmployersList(List<Vacancy> newEmployersList) { mNewEmployersList = newEmployersList; }
+    public void setVacanciesByEmployerList(List<Vacancy> vacanciesByEmployerList) { mVacanciesByEmployerList = vacanciesByEmployerList; }
 
     public String getStartURL() {
         return mStartURL;
@@ -86,6 +88,10 @@ public class VacancyChecker extends Application {
     public List<Vacancy> getNewEmployersList() {
         if (mNewEmployersList == null) return new ArrayList<Vacancy>();
         return mNewEmployersList;
+    }
+
+    public List<Vacancy> getVacanciesByEmployerList() {
+        return mVacanciesByEmployerList;
     }
 
     public void resetSettings(){
