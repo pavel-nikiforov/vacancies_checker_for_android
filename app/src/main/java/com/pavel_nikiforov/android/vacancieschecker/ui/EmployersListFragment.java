@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -100,8 +101,6 @@ public class EmployersListFragment extends Fragment {
         public void bind(Employer employer){
             mEmployer = employer;
 
-            Log.d(TAG, "Binding " + mEmployer.getName());
-
             mEmployerNameTextView.setText(mEmployer.getName());
             mVacanciesCountTextView.setText(String.valueOf(mEmployer.getCount()));
             mUpdatedTextView.setText(mEmployer.getVacanciesLastUpdated());
@@ -110,7 +109,7 @@ public class EmployersListFragment extends Fragment {
 
         @Override
         public void onClick(View view){
-            Toast.makeText(getActivity(), mEmployer.getName() + " clicked", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getActivity(), mEmployer.getName() + " clicked", Toast.LENGTH_SHORT).show();
 
             new FetchVacanciesForEmployer().execute(mEmployer);
 
@@ -175,6 +174,30 @@ public class EmployersListFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater menuInflater){
         super.onCreateOptionsMenu(menu, menuInflater);
         menuInflater.inflate(R.menu.menu_empl_list_fragment, menu);
+
+        MenuItem searchItem = menu.findItem(R.id.menu_item_search_empl);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
+            @Override
+            public boolean onQueryTextSubmit(String s){
+                new FetchSearchResults(s).execute();
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String s){
+                return false;
+            }
+        });
+
+        searchView.setOnCloseListener(new SearchView.OnCloseListener() {
+            @Override
+            public boolean onClose() {
+                new FetchEmployersFromDB().execute(DBReader.ORDER_BY_NAME);
+                return false;
+            }
+        });
     }
 
     @Override
@@ -209,6 +232,28 @@ public class EmployersListFragment extends Fragment {
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
+        }
+    }
+
+    private class FetchSearchResults extends AsyncTask<Void, Void, Void>{
+        private String mQuery = null;
+
+        public FetchSearchResults(String query){
+            mQuery = query;
+        }
+
+        @Override
+        public Void doInBackground(Void... params){
+            DBReader dbReader = DBReader.get(getContext());
+            mEmployersList = dbReader.fetchSearchEmployerResults(mQuery);
+            dbReader.closeDatabase();
+
+            return null;
+        }
+
+        @Override
+        public void onPostExecute(Void result){
+            setAdapter();
         }
     }
 

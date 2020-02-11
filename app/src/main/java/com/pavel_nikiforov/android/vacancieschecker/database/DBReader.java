@@ -106,5 +106,37 @@ public class DBReader {
     }
 
 
+    public List<Employer> fetchSearchEmployerResults(String search_query){
+        List<Employer> employers = new ArrayList<Employer>();
+
+        String query_head = "select e.\"EmployerID\", e.\"EmployerName\", count(v.\"VacancyID\"), max(v.\"VacancyLastUpdated\"), count(v.\"VacancyID\") + sum(v.\"VacancyUpdatesCount\"), lower(e.\"EmployerName\") " +
+                "from EMPLOYERS as e inner join VACANCIES as v on e.\"EmployerID\" = v.\"EmployerID\" " +
+                "where lower(e.\"EmployerName\") like '%";
+
+        String query_tail = "%' group by e.\"EmployerID\" order by 2 asc";
+
+        Cursor cursor = mDatabase.rawQuery(query_head + search_query + query_tail, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+//            some error handling here
+        } else {
+            cursor.moveToFirst();
+            for(int i=0; i < count; i++){
+                Employer employer = new Employer();
+                employer.setID(cursor.getLong(0));
+                employer.setName(cursor.getString(1));
+                employer.setVacanciesCount(cursor.getLong(2));
+                employer.setVacanciesLastUpdated(cursor.getString(3));
+                employer.setActivityRank(cursor.getLong(4));
+                employers.add(employer);
+                cursor.moveToNext();
+            }
+        }
+
+        cursor.close();
+        return employers;
+    }
+
+
 
 }
