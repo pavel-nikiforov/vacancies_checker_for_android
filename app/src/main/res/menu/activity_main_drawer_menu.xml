@@ -68,6 +68,11 @@
             android:icon="@android:drawable/ic_menu_preferences"
             android:title="@string/drawer_menu_item_view_database">
         </item>
+        <item
+            android:id="@+id/drawer_menu_item_recent_vacs"
+            android:icon="@android:drawable/ic_menu_preferences"
+            android:title="@string/drawer_menu_item_recent_vacs">
+        </item>
     </group>
 
 </menu>

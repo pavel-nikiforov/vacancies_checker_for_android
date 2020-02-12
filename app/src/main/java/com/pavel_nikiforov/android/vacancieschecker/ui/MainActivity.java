@@ -90,6 +90,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             proceedTo("settings");
         } else if (id == R.id.drawer_menu_item_view_database){
             proceedTo("view-database");
+        } else if (id == R.id.drawer_menu_item_recent_vacs){
+            proceedTo("recent");
         }
 
         mDrawerLayout.closeDrawer(GravityCompat.START);
@@ -121,6 +123,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             nextFrag = new SettingsFragment();
         } else if(destination.contentEquals("view-database")){
             nextFrag = new EmployersListFragment();
+        } else if(destination.contentEquals("recent")){
+            nextFrag = new RecentVacanciesListFragment();
         } else {
             nextFrag = new VacanciesListFragment();
         }

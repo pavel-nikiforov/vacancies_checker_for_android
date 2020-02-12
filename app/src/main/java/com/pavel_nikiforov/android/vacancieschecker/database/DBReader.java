@@ -17,6 +17,10 @@ public class DBReader {
     public static final String ORDER_BY_COUNT_DESC = "3 desc";
     public static final String ORDER_BY_RANK = "5";
     public static final String ORDER_BY_RANK_DESC = "5 desc";
+    public static final String ORDER_BY_UPDATE_DATE = "\"VacancyLastUpdated\" desc, \"VacancyDate\" desc";
+    public static final String ORDER_BY_DATE = "\"VacancyDate\" desc, \"VacancyLastUpdated\" desc";
+    public static final String ORDER_BY_UPDATES_COUNT = "\"VacancyUpdatesCount\" desc, \"VacancyLastUpdated\" desc";
+
 
     private static DBReader sDBReader;
 
@@ -135,6 +139,41 @@ public class DBReader {
 
         cursor.close();
         return employers;
+    }
+
+
+
+    public List<Vacancy> fetchRecentVacancies(String sortOrder){
+        List<Vacancy> vacancies = new ArrayList<Vacancy>();
+
+        String query_head = "select * from VACANCIES as v join EMPLOYERS as e on v.\"EmployerID\" = e.\"EmployerID\" order by ";
+        String query_tail = " limit 100";
+
+        Cursor cursor = mDatabase.rawQuery(query_head + sortOrder + query_tail, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+//            some error handling here
+        } else {
+            cursor.moveToFirst();
+            for(int i=0; i < count; i++){
+                Vacancy vacancy = new Vacancy();
+                vacancy.setVacancyID(cursor.getLong(0));
+                vacancy.setEmployerID(cursor.getLong(1));
+                vacancy.setName(cursor.getString(2));
+                vacancy.setURL(cursor.getString(3));
+                vacancy.setVacancyDate(cursor.getString(4));
+                vacancy.setVacancyLastUpdated(cursor.getString(5));
+                vacancy.setVacancyUpdatesCount(cursor.getInt(6));
+                vacancy.setEmployerName(cursor.getString(8));
+
+                vacancies.add(vacancy);
+                cursor.moveToNext();
+            }
+        }
+
+        cursor.close();
+
+        return vacancies;
     }
 
 
