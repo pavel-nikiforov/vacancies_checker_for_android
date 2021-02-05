@@ -48,4 +48,13 @@
     <string name="recentvacs_menu_sort_by_date">Sort by Date</string>
     <string name="recentvacs_menu_sort_by_update_date">Sort by Update Date</string>
     <string name="recentvacs_menu_sort_by_update_count">Sort by Update Count</string>
+    <string name="update_status_title">Current Status</string>
+    <string name="update_status_empl_label">Employers</string>
+    <string name="update_status_vac_label">Vacancies</string>
+    <string name="update_status_date_label">Last Update</string>
+    <string name="update_status_ok_label">Okay</string>
+    <string name="welcome_headline">Welcome to Vacancies Checker</string>
+    <string name="welcome_check_settings">Check Settings to ensure it suits your needs</string>
+    <string name="welcome_or">-- OR --</string>
+    <string name="welcome_press_check">Press [CHECK FOR UPDATES] to start</string>
 </resources>

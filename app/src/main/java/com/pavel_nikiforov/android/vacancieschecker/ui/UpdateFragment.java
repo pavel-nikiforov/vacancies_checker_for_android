@@ -1,9 +1,13 @@
 package com.pavel_nikiforov.android.vacancieschecker.ui;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.pavel_nikiforov.android.vacancieschecker.database.DBReader;
 import com.pavel_nikiforov.android.vacancieschecker.logic.HHFetcher;
 import com.pavel_nikiforov.android.vacancieschecker.logic.LoggedAsyncTask;
 import com.pavel_nikiforov.android.vacancieschecker.logic.VacancyChecker;
@@ -34,12 +39,23 @@ public class UpdateFragment extends Fragment {
     private List<Vacancy> mNewEmployers = new ArrayList<Vacancy>();
     private List<String> mLogList = new ArrayList<>();
 
+    private ViewGroup mViewGroup;
     private RecyclerView mLogReciclerView;
     private RecyclerView.LayoutManager mLayoutManager;
     private LogAdapter mLogListAdapter;
 
     private Button mStartButton;
     private boolean mUpdateComplete;
+
+    private CardView mStatusCardView;
+    private CardView mWelcomeCardView;
+
+    private long mEmployersTotal = 0;
+    private long mVacanciesTotal = 0;
+    private String mLastUpdateDate = "";
+    TextView mEmpoyersTotalView;
+    TextView mVacanciesTotalView;
+    TextView mLastUpdateDateView;
 
     public static UpdateFragment newInstance() {
         return new UpdateFragment();
@@ -53,6 +69,7 @@ public class UpdateFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        mViewGroup = container;
         View view = inflater.inflate(R.layout.fragment_update, container, false);
 
         mLogReciclerView = (RecyclerView) view.findViewById(R.id.log_view);
@@ -60,6 +77,16 @@ public class UpdateFragment extends Fragment {
         mLogReciclerView.setAdapter(mLogListAdapter);
         mLayoutManager = new LinearLayoutManager(getContext());
         mLogReciclerView.setLayoutManager(mLayoutManager);
+
+        mStatusCardView = (CardView) view.findViewById(R.id.stat_view);
+        mEmpoyersTotalView = (TextView) view.findViewById(R.id.status_empl_count);
+        mEmpoyersTotalView.setText(String.valueOf(mEmployersTotal));
+        mVacanciesTotalView = (TextView) view.findViewById(R.id.status_vac_count);
+        mVacanciesTotalView.setText(String.valueOf(mVacanciesTotal));
+        mLastUpdateDateView = (TextView) view.findViewById(R.id.status_date);
+        mLastUpdateDateView.setText(mLastUpdateDate);
+
+        mWelcomeCardView = (CardView) view.findViewById(R.id.welcome_view);
 
         mStartButton = (Button) view.findViewById(R.id.update_button);
         if(mUpdateComplete){
@@ -81,12 +108,19 @@ public class UpdateFragment extends Fragment {
                 public void onClick(View v) {
 
                     mStartButton.setEnabled(false);
+                    mWelcomeCardView.setVisibility(View.GONE);
+                    mStatusCardView.setVisibility(View.GONE);
+                    mLogReciclerView.setVisibility(View.VISIBLE);
 
                     new PagesGrabber().execute();
 
                 }
             });
+
+            new StatusGetter().execute();
         }
+
+//        showStatusDialog();
 
 
         return view;
@@ -203,6 +237,39 @@ public class UpdateFragment extends Fragment {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+
+    private class StatusGetter extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        public Void doInBackground(Void... params) {
+
+            DBReader reader = DBReader.get(getContext());
+            mEmployersTotal = reader.fetchEmployersTotalCount();
+            if(mEmployersTotal > 0){
+                mVacanciesTotal = reader.fetchVacanciesTotalCount();
+                mLastUpdateDate = reader.fetchLastUpdateDate();
+            }
+            return null;
+    }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            if(mEmployersTotal > 0){
+                mWelcomeCardView.setVisibility(View.GONE);
+
+                mStatusCardView.setVisibility(View.VISIBLE);
+                mEmpoyersTotalView.setText(String.valueOf(mEmployersTotal));
+                mVacanciesTotalView.setText(String.valueOf(mVacanciesTotal));
+                mLastUpdateDateView.setText(mLastUpdateDate);
+            }
+            else {
+                mWelcomeCardView.setVisibility(View.VISIBLE);
+            }
+        }
+
     }
 
 }

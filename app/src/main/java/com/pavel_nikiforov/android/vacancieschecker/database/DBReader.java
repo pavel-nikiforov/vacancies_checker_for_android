@@ -3,6 +3,7 @@ package com.pavel_nikiforov.android.vacancieschecker.database;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.pavel_nikiforov.android.vacancieschecker.logic.Employer;
 import com.pavel_nikiforov.android.vacancieschecker.logic.Vacancy;
@@ -176,6 +177,48 @@ public class DBReader {
         return vacancies;
     }
 
+    public long fetchEmployersTotalCount(){
+        String query = "select count(*) from EMPLOYERS";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+            return 0;
+        } else {
+            cursor.moveToFirst();
+            Log.d("DBREAD", "fetchEmployersTotalCount(): " + cursor.getLong(0));
+            return cursor.getLong(0);
+        }
+    }
+
+
+    public long fetchVacanciesTotalCount(){
+        String query = "select count(*) from VACANCIES";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+            return 0;
+        } else {
+            cursor.moveToFirst();
+            return cursor.getLong(0);
+        }
+    }
+
+
+
+    public String fetchLastUpdateDate(){
+        String query = "select max(\"VacancyLastUpdated\") from VACANCIES";
+
+        Cursor cursor = mDatabase.rawQuery(query, null);
+        int count = cursor.getCount();
+        if (count == 0) {
+            return "";
+        } else {
+            cursor.moveToFirst();
+            return cursor.getString(0);
+        }
+    }
 
 
 }
