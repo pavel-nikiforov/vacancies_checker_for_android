@@ -59,7 +59,7 @@ public class HHFetcher{
                     .get();
             Log.d(tag, "--- got title: " + doc.title());
             log(caller, "--- got title: " + doc.title());
-            Elements vacBlocks = doc.select("div[data-qa='vacancy-serp__vacancy']");
+            Elements vacBlocks = doc.select("div[data-qa^='vacancy-serp__vacancy vacancy-serp__vacancy_']");
             Log.d(tag, "--- found blocks: " + vacBlocks.size());
             log(caller, "--- found blocks: " + vacBlocks.size());
 
