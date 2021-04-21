@@ -26,6 +26,8 @@ public class HHFetcher{
     private static String user_agent = "Mozilla/5.0 (X11; Fedora; Linux x86_64; rv:69.0) Gecko/20100101 Firefox/71.0";
     private static String vacancy_list_url = "https://spb.hh.ru/search/vacancy?text=&specialization=1.117&area=2&salary=&currency_code=RUR&experience=doesNotMatter&order_by=publication_time&search_period=1&items_on_page=50&no_magic=true";
 
+    private static String block_selector = "div.vacancy-serp-item[data-qa^='vacancy-serp__vacancy']";
+
     private static String name_selector = "a[data-qa='vacancy-serp__vacancy-title']";
     private static String employer_selector = "a[data-qa='vacancy-serp__vacancy-employer']";
 
@@ -59,7 +61,8 @@ public class HHFetcher{
                     .get();
             Log.d(tag, "--- got title: " + doc.title());
             log(caller, "--- got title: " + doc.title());
-            Elements vacBlocks = doc.select("div[data-qa^='vacancy-serp__vacancy vacancy-serp__vacancy_']");
+//            Elements vacBlocks = doc.select("div[data-qa^='vacancy-serp__vacancy vacancy-serp__vacancy_']");
+            Elements vacBlocks = doc.select(block_selector);
             Log.d(tag, "--- found blocks: " + vacBlocks.size());
             log(caller, "--- found blocks: " + vacBlocks.size());
 
