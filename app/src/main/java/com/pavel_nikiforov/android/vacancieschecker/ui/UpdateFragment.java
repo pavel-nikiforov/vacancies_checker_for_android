@@ -120,7 +120,6 @@ public class UpdateFragment extends Fragment {
             new StatusGetter().execute();
         }
 
-//        showStatusDialog();
 
 
         return view;

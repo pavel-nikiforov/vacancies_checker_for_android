@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.pavel_nikiforov.android.vacancieschecker.logic.Vacancy;
 import com.pavel_nikiforov.android.vacancieschecker.logic.VacancyChecker;
@@ -45,6 +46,13 @@ public class VacancyDetailsFragment extends Fragment {
 
         mEmployerTextView = (TextView) view.findViewById(R.id.vacdetails_employer);
         mEmployerTextView.setText(mVacancy.getEmployerName());
+        mEmployerTextView.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                Toast.makeText(getContext(), "emp selected " + mEmployerTextView.getText(), Toast.LENGTH_LONG).show();
+                return false;
+            }
+        });
 
         mVacacyNameTextView = (TextView) view.findViewById(R.id.vacdetails_vacancy);
         mVacacyNameTextView.setText(mVacancy.getName());

@@ -72,7 +72,7 @@ public class HHFetcher{
                 name = block.select(name_selector).get(0).text();
 
                 String link;
-                link = block.select(name_selector).get(0).attr("href");
+                link = block.select(name_selector).get(0).attr("href").split("\\?")[0];
 
                 String employer;
                 if(block.select(employer_selector).size() != 0) {
